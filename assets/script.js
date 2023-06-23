@@ -1,61 +1,84 @@
 // Regex Search
 $(document).ready(function () {
-      var wordsArray = arrayData;
-     
-      $("[name='username']").keyup(function () {
-        var words = $(this).val().replace(/_/g, '.');
-        
-          console.log(words);
-          try {
-            var searchWord = words.toLowerCase()
+  var wordsArray = arrayData;
+  var Count2 = document.querySelector("#count2");
+  var Count3 = document.querySelector("#count3");
 
-            var reg = new RegExp(searchWord);
-            $("#result").html('');
-            for (var j = 0; j < wordsArray.length; j++) {
-              var value = wordsArray[j];
-              var eachWord = value.toLowerCase()
+  Count3.innerHTML=wordsArray.length
+  $("[name='username']").keyup(function () {
+    var words = $(this).val().replace(/_/g, '.');
 
-              if (reg.test(eachWord)) {
+    console.log(words);
+    try {
+      var searchWord = words.toLowerCase()
 
-                var i;
-                if (searchWord.length != eachWord.length)
-                  continue;
-                for (i = 0; i < searchWord.length; i++) {
-                  if (searchWord[i] == '.')
-                    continue;
-                  if (searchWord[i] != eachWord[i])
-                    break;
-
-                }
-                if (i == searchWord.length)
-                  $("#result").append(value + '<br>');
-              }
-            }
+      var reg = new RegExp(searchWord);
+      $("#result").html('');
+      
+      var Words = 0;
+      Count2.innerHTML="0"
+      
+      for (var j = 0; j < wordsArray.length; j++) {
+        var value = wordsArray[j];
+        var eachWord = value.toLowerCase()
+        if (reg.test(eachWord)) {
+          var i;
+          if (searchWord.length != eachWord.length)
+            continue;
+          for (i = 0; i < searchWord.length; i++) {
+            if (searchWord[i] == '.')
+              continue;
+            if (searchWord[i] != eachWord[i])
+              break;
           }
-          catch (e) {
-            // regular expression error
-          }
-        
-      });
-    });  
+          if (i == searchWord.length)
+            $("#result").append(value + '<br>');
+            Words+=1;
+            Count2.innerHTML=Words
+        }
+      }
+    }
+    catch (e) {
+      // regular expression error
+    }
+
+  });
+});
 
 // Help Modal
-  var helpModal = document.getElementById("help-modal");
-  var helpBtn = document.getElementById("help-btn");
-  var helpCloseBtn = document.getElementById("help-modal-close");
+var helpModal = document.getElementById("help-modal");
+var helpBtn = document.getElementById("help-btn");
+var helpCloseBtn = document.getElementById("help-modal-close");
+var ContactButton = document.querySelector("#contact")
+var ContactModal = document.querySelector("#contactModal")
+var missingWordModal = document.querySelector("#missingWordModal");
 
-  helpBtn.addEventListener("click", function() {
-    helpModal.style.display = "block";
-  });
-  helpCloseBtn.addEventListener("click", function() {
-    helpModal.style.display = "none";
-  });
+
+ContactButton.addEventListener("click",()=>{
+  ContactModal.classList.toggle("hide")
+})
+document.querySelector("#contact-modal-close").addEventListener("click",()=>{
+  ContactModal.classList.toggle("hide")
+})
+document.querySelector("#missing").addEventListener("click",()=>{
+  missingWordModal.classList.toggle("hide")
+})
+document.querySelector("#missingWord-modal-close").addEventListener("click",()=>{
+  missingWordModal.classList.toggle("hide")
+})
+
+helpBtn.addEventListener("click", function () {
+  helpModal.style.display = "block";
+});
+helpCloseBtn.addEventListener("click", function () {
+  helpModal.style.display = "none";
+});
 
 
 // Character Count
 var count = document.getElementById("count")
 var input = document.getElementById("input")
 
-input.addEventListener("input", function(e){
+input.addEventListener("input", function (e) {
   count.innerHTML = e.target.value.length
 })

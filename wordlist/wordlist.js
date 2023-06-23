@@ -1872,5 +1872,4 @@ var arrayData = [
 	"Zombie",
 	"Zombie Apocalypse",
 	"Zoo"
-	
 ]
