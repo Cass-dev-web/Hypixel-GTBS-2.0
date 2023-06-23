@@ -17,7 +17,7 @@ $(document).ready(function () {
       
       var Words = 0;
       Count2.innerHTML="0"
-      
+
       for (var j = 0; j < wordsArray.length; j++) {
         var value = wordsArray[j];
         var eachWord = value.toLowerCase()
@@ -32,10 +32,14 @@ $(document).ready(function () {
               break;
           }
           if (i == searchWord.length)
-            $("#result").append(value + '<br>');
+            // With copy button->> $("#result").append(value + ' <button onclick=\''+`navigator.clipboard.writeText("${value}"); alert("Copied ${value}!")`+'\'>Copy</button> <br>');
+            $("#result").append(`<code class="res">${value}</code>`);
             Words+=1;
             Count2.innerHTML=Words
         }
+      }
+      if(Words==0&&searchWord.length!=0){
+        $("#result").html('<br><span class="error">No results were found!</span>');
       }
     }
     catch (e) {

@@ -15,6 +15,7 @@
   font-size: 16.5px;
   text-align: center;
   list-style-type: none;
+  margin-top: 10px;
 }
 
 ::placeholder {
@@ -335,4 +336,12 @@ nav ul li ul li a {
 
 .small {
   font-size: 10px;
+}
+
+.error{
+  color: #fb5958;
+  font-weight: 700;
+}
+.res{
+  margin-top: 5px;
 }
