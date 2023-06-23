@@ -1,7 +1,5 @@
-# GTB-Solver !!gtb.yangciou.com is no longer being updated!!
-## To Use This:
-- Download the source code
-- Open index.html in a browser
-- Type in hints given by the game and possible results will show up
-- You can add onto the words in wordlist/wordlist.js (words from the end of the submissions.txt aren't added yet)
-- The original words were scraped using a bot
+# [Hypixel] Guess The Build solver 2.0
+
+*Now being updated by cass-dev-web.*
+
+A tool which you can use to easily figure out a word in the Guess The Build game in Hypixel.
