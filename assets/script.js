@@ -1,5 +1,18 @@
 // Regex Search
+var r2 = document.querySelector("#r2");
+var db=false;
+function ShowM(m){
+  if(db){return}
+  r2.innerHTML=m
+  db=true
+  r2.classList.remove("hide")
+  setTimeout(() => {
+    r2.classList.add("hide")
+    db=false
+  }, 1000);
+}
 $(document).ready(function () {
+  
   var wordsArray = arrayData;
   var Count2 = document.querySelector("#count2");
   var Count3 = document.querySelector("#count3");
@@ -33,7 +46,7 @@ $(document).ready(function () {
           }
           if (i == searchWord.length)
             // With copy button->> $("#result").append(value + ' <button onclick=\''+`navigator.clipboard.writeText("${value}"); alert("Copied ${value}!")`+'\'>Copy</button> <br>');
-            $("#result").append(`<code class="res">${value}</code>`);
+            $("#result").append(`<code class="res" onclick="navigator.clipboard.writeText('${value}'); ShowM('Copied ${value}!');">${value}</code>`);
             Words+=1;
             Count2.innerHTML=Words
         }
